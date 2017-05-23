@@ -5,6 +5,10 @@ using UnityEngine;
 public class BarrelCtrl : MonoBehaviour {
     //폭발 효과 파티클 연결 변수
     public GameObject expEffect;
+    //무작위로 선택할 텍스처 배열
+    public Texture[] textures;
+
+
     private Transform tr;
 
     //총알 맞은 횟수를 누적시킬 변수
@@ -14,6 +18,9 @@ public class BarrelCtrl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         tr = GetComponent<Transform>();
+
+        int idx = Random.Range(0, textures.Length);
+        GetComponentInChildren<MeshRenderer>().material.mainTexture = textures[idx];
 	}
 
 
